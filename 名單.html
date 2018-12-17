@@ -1,0 +1,65 @@
+<?php
+	mysql_connect("127.0.0.1","root","isasp"); //連結伺服器(網域，帳號，密碼)
+	mysql_select_db("test1"); //選擇資料庫
+	mysql_query("set names utf8"); //以utf8讀取資料
+	$data = mysql_query("select * from 名單"); //從資料庫中選取資料表
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www">
+
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+	<head>
+		<meat http-equiv="名單-type" test1="text/html; charset=utf-8"/>
+		<title>datebase</title>
+		
+	</head>
+
+	<body>
+		
+		
+		<p>datebase</p>
+		
+		<table width="700" border="1">
+		  <tr>
+			<td>name</td>
+			<td>gender</td>
+			<td>phone</td>
+			<td>mobile</td>
+			<td>born</td>
+		  </tr>
+		  <tr>
+			<td>kiki</td>
+			<td>girl</td>
+			<td>022222222</td>
+			<td>094165545</td>
+			<td>1998/03/16</td>
+		  </tr>
+		  <tr>
+			<td>cindy</td>
+			<td>girl</td>
+			<td>023333333</td>
+			<td>094165545</td>
+			<td>1998/07/09</td>
+		  </tr>
+		</table>
+		
+		<table>
+			<?php
+		for($i=1;$i<=mysql_num_rows($data);$i++)
+		{
+			$rs=mysql_fetch_row($data);
+		?>
+			  <tr>
+				<td><?php echo $rs[0]?></td>
+				<td><?php echo $rs[1]?></td>
+				<td><?php echo $rs[2]?></td>
+				<td><?php echo $rs[3]?></td>
+				<td><?php echo $rs[4]?></td>
+			  </tr>
+		<?php
+		}
+		?>
+		</table>
+		<p>&nbsp;</p>
+		
+	</body>
+</html>
